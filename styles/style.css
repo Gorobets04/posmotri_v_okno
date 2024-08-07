@@ -9,6 +9,7 @@ html {
 }
 
 .page {
+  display: flex;
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
@@ -36,5 +37,35 @@ ul,
 ol {
   list-style: none;
 }
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  max-width: 1140px;
+  margin: auto;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.content__details {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  
+}
+
+.content__list {
+  height: 534px;
+  overflow: auto;
+}
+
 
 
