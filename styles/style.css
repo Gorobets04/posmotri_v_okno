@@ -66,6 +66,14 @@ ol {
   object-position: center;
 }
 
+.error-template {
+  display: inline-flex;
+  padding: 133px 30px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
 .search-form {
   display: flex;
   justify-content: space-between;
@@ -160,7 +168,6 @@ li:last-child {
 }
 
 .content__card-link:focus-visible {
-  flex-shrink: 0;
   border: 1px #FFF solid;
 }
 
