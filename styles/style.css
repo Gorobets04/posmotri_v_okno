@@ -13,7 +13,6 @@ html {
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
-  padding: 133px 30px;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
@@ -51,6 +50,22 @@ ol {
   margin-top: 78px;
 }
 
+.result__video-container {
+  display: flex;
+  position: relative;
+  width: 711px;
+  height: 386px;
+  margin-bottom: 16px;
+}
+
+.result__video {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+}
+
 .search-form {
   display: flex;
   justify-content: space-between;
@@ -69,24 +84,8 @@ ol {
 
 .content__list {
   height: 534px;
-  overflow: auto;
+  overflow-y: auto;
   position: relative;
-}
-
-.result__video-container {
-  display: flex;
-  position: relative;
-  width: 711px;
-  height: 386px;
-  margin-bottom: 16px;
-}
-
-.result__video {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  object-fit: cover;
-  object-position: center;
 }
 
 .content__list-item {
@@ -102,7 +101,6 @@ li:last-child {
   align-items: start;
   justify-content: space-between;
   width: 394px;
-  height: 103px;
 }
 
 .content__video-card:hover {
@@ -114,14 +112,6 @@ li:last-child {
   background: #545050;
 }
 
-.content__video-card:focus {
-  outline: none;
-}
-
-.content__video-card:focus-visible {
-  outline: 1px #FFF solid;
-}
-
 .content__video-card-description-container {
   flex-grow: 1;
 }
@@ -129,6 +119,8 @@ li:last-child {
 .content__video-card-thumbnail {
   width: 194px;
   height: 100%;
+  object-fit: cover;
+  object-position: top left;
 }
 
 .search-form__fieldset-title {
@@ -173,20 +165,29 @@ li:last-child {
 }
 
 .content__video-card-title {
+  display: block;
   font-family: Oswald, sans-serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
   line-height: 100%;
   text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .content__video-card-description {
+  display: block;
+  width: 200px;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 16.2px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .visually-hidden {
@@ -234,14 +235,17 @@ li:last-child {
   outline: 1px solid #FFF;
 }
 
-.search-form__pseudo-checkbox:active {
-  display: inline-block;
-  vertical-align: middle;
+.search-form__checkbox:checked + span {
+  position: relative;
+}
+
+.search-form__checkbox:checked ~ .search-form__pseudo-checkbox::after {
   width: 15px;
   height: 15px;
-  background-color:#FFF;
-  outline-offset: 1px;
-  outline: 1px solid #FFF;
+  display: block;
+  margin: 1px auto auto;
+  background-color: #fff;
+  content: "";
 }
 
 .search-form__label {
@@ -261,12 +265,6 @@ li:last-child {
   line-height: normal;
 }
 
-.search-form__label-text:hover {
-  text-decoration-line: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-}
-
 .search-form__textfield {
   border: none;
   color:#FFF;
@@ -283,25 +281,25 @@ li:last-child {
   appearance: none;
 }
 
-.search-form__textfield:hover {
-  cursor: text;
-}
-
-.search-form__textfield:active {
-  border: 1px #FFF solid;
-}
-
-input::placeholder {
-  color:  rgba(255, 255, 255, 0.70);
-}
-
-input:focus {
+.search-form__textfield:focus, 
+.search-form__textfield:has(:focus-visible) {
   outline: none;
 }
 
-label:has(input:focus-visible) {
-  border: 1px solid #FFF;
-  padding: 2px;
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__label:has(:focus-visible) > .search-form__textfield {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.search-form__checkbox-list > .search-form__label:hover {
+  outline: none;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .button {
@@ -317,13 +315,13 @@ label:has(input:focus-visible) {
 }
 
 .button:hover {
-   text-decoration-line: underline;
+  text-decoration-line: underline;
   text-underline-offset: 3px;
   cursor: pointer;
 }
 
 .button:active {
-  border: 1px #FFF solid;
+  outline: 1px #FFF solid;
   background: #545050;
 }
 
